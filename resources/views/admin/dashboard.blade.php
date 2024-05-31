@@ -41,7 +41,7 @@
   
             <div class="row">
               <div class="col-md-12 col-sm-12 ">
-                {{-- <div class="dashboard_graph">
+                <div class="dashboard_graph">
   
                   <div class="row x_title">
                     <div class="col-md-6">
@@ -104,7 +104,7 @@
                   </div>
   
                   <div class="clearfix"></div>
-                </div> --}}
+                </div>
               </div>
   
             </div>
@@ -352,7 +352,7 @@
             </div>
   
   
-            {{-- <div class="row">
+            <div class="row">
               <div class="col-md-4 col-sm-4 ">
                 <div class="x_panel">
                   <div class="x_title">
@@ -678,7 +678,7 @@
                   <!-- end of weather widget -->
                 </div>
               </div>
-            </div> --}}
+            </div>
           </div>
           <!-- /page content -->
 @endsection

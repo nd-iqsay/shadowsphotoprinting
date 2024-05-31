@@ -27,7 +27,7 @@
     <script src="{{ asset('assets/admin/vendors/flot-spline/js/jquery.flot.spline.min.js') }}"></script>
     <script src="{{ asset('assets/admin/vendors/flot.curvedlines/curvedLines.js') }}"></script>
     <!-- DateJS -->
-    <script src="{{ asset('assets/admin/vendors/DateJS/build/date.js"') }}"></script>
+    <script src="{{ asset('assets/admin/vendors/DateJS/build/date.js') }}"></script>
     <!-- JQVMap -->
     <script src="{{ asset('assets/admin/vendors/jqvmap/dist/jquery.vmap.js') }}"></script>
     <script src="{{ asset('assets/admin/vendors/jqvmap/dist/maps/jquery.vmap.world.js') }}"></script>
@@ -38,3 +38,6 @@
 
     <!-- Custom Theme Scripts -->
     <script src="{{ asset('assets/admin/build/js/custom.min.js') }}"></script>
+</body>
+</html>
+

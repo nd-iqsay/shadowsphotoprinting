@@ -33,11 +33,20 @@
             <form action="{{ route('admin.login.post') }}" method="POST">
               @csrf
               <h1>Login Form</h1>
+              @if(Session::has('error'))
+               <p class="text-danger">{{ Session::get('error') }}</p>
+              @endif
               <div>
-                <input type="text" class="form-control" id="email" name="email" placeholder="Username" required="" />
+                <input type="text" class="form-control" id="email" name="email" placeholder="Username" />
+                @error('email')
+                  <span class="text-danger">{{ $message }}</span>
+                @enderror
               </div>
               <div>
-                <input type="password" class="form-control" id="password" name="password" placeholder="Password" required="" />
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password"  />
+                @error('password')
+                  <span class="text-danger">{{ $message }}</span>
+                @enderror
               </div>
               <div>
                 <button type="submit" class="btn btn-default submit">Log in</button>

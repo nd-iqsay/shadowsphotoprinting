@@ -19,7 +19,7 @@
     <link href="{{ asset('assets/admin/vendors/animate.css/animate.min.css') }}" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <link href="{{ asset('assets/admin/build/css/custom.min.css') }}" rel="stylesheet">
   </head>
 
   <body class="login">
@@ -41,18 +41,18 @@
               </div>
               <div>
                 <button type="submit" class="btn btn-default submit">Log in</button>
-                <a class="reset_pass" href="#">Lost your password?</a>
+                {{-- <a class="reset_pass" href="#">Lost your password?</a> --}}
               </div>
 
               <div class="clearfix"></div>
 
               <div class="separator">
-                <p class="change_link">New to site?
+                {{-- <p class="change_link">New to site?
                   <a href="#signup" class="to_register"> Create Account </a>
-                </p>
+                </p> --}}
 
-                <div class="clearfix"></div>
-                <br />
+                {{-- <div class="clearfix"></div>
+                <br /> --}}
 
                 {{-- <div>
                   <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>

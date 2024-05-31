@@ -13,19 +13,32 @@ class AuthController extends Controller
         return view('admin.auth.login');
     }
 
+    private function validator(Request $request)
+	{
+    //validation rules.
+    $rules = [
+        'email'    => 'required|email|exists:admins|min:5|max:191',
+        'password' => 'required|string|min:4|max:255',
+    ];
+
+    //custom validation error messages.
+    $messages = [
+        'email.exists' => 'These credentials do not match our records.',
+    ];
+
+    //validate the request.
+    $request->validate($rules,$messages);
+	}
+
     public function loginPost(Request $request)
-    {
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required|min:6',
-        ]);
+	{
+        $this->validator($request); 
 
-        $credentials = $request->only('email', 'password');
-
-        if (Auth::guard('admin')->attempt($credentials)) {
-            return back()->with('status', 'Login successful!');
+        if (auth()->guard('admin')->attempt(['email' => $request->input('email'), 'password' => $request->input('password')])){	
+            return redirect()->route('admin-dashboard');
+        }else{
+            return back()->with('status','Your Name or password is Wrong!');
         }
-
-        return back()->with('status', 'Your email or password is wrong!');
-    }
+        return $this->loginFailed();
+	}
 }

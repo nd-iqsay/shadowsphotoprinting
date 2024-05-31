@@ -8,7 +8,7 @@
             <ul class=" navbar-right">
               <li class="nav-item dropdown open" style="padding-left: 15px;">
                 <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                  <img src="images/img.jpg" alt="">John Doe
+                  <img src="{{ asset('assets/admin/images/img.jpg') }}" alt="">John Doe
                 </a>
                 <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item"  href="javascript:;"> Profile</a>
@@ -17,7 +17,19 @@
                       <span>Settings</span>
                     </a>
                 <a class="dropdown-item"  href="javascript:;">Help</a>
-                  <a class="dropdown-item"  href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                  {{-- <a class="dropdown-item"  href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a> --}}
+                  {{-- <div class="dropdown-divider"></div> --}}
+                                 @if(\Illuminate\Support\Facades\Auth::guard('admin')->check())
+                 <a class="dropdown-item"  href="{{ route('admin-logout') }}"
+                    onclick="event.preventDefault() ;
+                          document.getElementById('admin-logout-form').submit();">
+                   <i class="fa fa-sign-out pull-right"></i>
+                   {{ __('Logout') }}
+                 </a>
+				  <form id="admin-logout-form" action="{{ route('admin-logout') }}" method="POST" style="display: none;">
+                   @csrf
+                 </form>
+				 @endif
                 </div>
               </li>
 
@@ -29,7 +41,7 @@
                 <ul class="dropdown-menu list-unstyled msg_list" role="menu" aria-labelledby="navbarDropdown1">
                   <li class="nav-item">
                     <a class="dropdown-item">
-                      <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                      <span class="image"><img src="{{ asset('assets/admin/images/img.jpg') }}" alt="Profile Image" /></span>
                       <span>
                         <span>John Smith</span>
                         <span class="time">3 mins ago</span>
@@ -41,7 +53,7 @@
                   </li>
                   <li class="nav-item">
                     <a class="dropdown-item">
-                      <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                      <span class="image"><img src="{{ asset('assets/admin/images/img.jpg') }}" alt="Profile Image" /></span>
                       <span>
                         <span>John Smith</span>
                         <span class="time">3 mins ago</span>
@@ -53,7 +65,7 @@
                   </li>
                   <li class="nav-item">
                     <a class="dropdown-item">
-                      <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                      <span class="image"><img src="{{ asset('assets/admin/images/img.jpg') }}" alt="Profile Image" /></span>
                       <span>
                         <span>John Smith</span>
                         <span class="time">3 mins ago</span>
@@ -65,7 +77,7 @@
                   </li>
                   <li class="nav-item">
                     <a class="dropdown-item">
-                      <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                      <span class="image"><img src="{{ asset('assets/admin/images/img.jpg') }}" alt="Profile Image" /></span>
                       <span>
                         <span>John Smith</span>
                         <span class="time">3 mins ago</span>

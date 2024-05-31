@@ -35,10 +35,21 @@ class AuthController extends Controller
         $this->validator($request); 
 
         if (auth()->guard('admin')->attempt(['email' => $request->input('email'), 'password' => $request->input('password')])){	
-            return redirect()->route('admin-dashboard');
+            return redirect()->route('admin.dashboard')->with('success','Your Name or password is Wrong!');
         }else{
-            return back()->with('status','Your Name or password is Wrong!');
+            return back()->with('error','Your Name or password is Wrong!');
         }
         return $this->loginFailed();
+	}
+
+    public function dashboard()
+    {
+        return view('admin.dashboard');
+    }
+
+    public function logout()
+	{
+        Auth::guard('admin')->logout();
+        return redirect()->route('admin.login.post')->with('status','Admin has been logged out!');
 	}
 }

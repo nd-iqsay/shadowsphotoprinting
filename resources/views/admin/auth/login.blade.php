@@ -10,16 +10,16 @@
     <title>Gentelella Alela! | </title>
 
     <!-- Bootstrap -->
-    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('assets/admin/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{{ asset('assets/admin/vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
     <!-- NProgress -->
-    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <link href="{{ asset('assets/admin/vendors/nprogress/nprogress.css') }}" rel="stylesheet">
     <!-- Animate.css -->
-    <link href="../vendors/animate.css/animate.min.css" rel="stylesheet">
+    <link href="{{ asset('assets/admin/vendors/animate.css/animate.min.css') }}" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <link href="{{ asset('assets/admin/build/css/custom.min.css') }}" rel="stylesheet">
   </head>
 
   <body class="login">
@@ -30,39 +30,49 @@
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
-            <form>
+            <form action="{{ route('admin.login.post') }}" method="POST">
+              @csrf
               <h1>Login Form</h1>
+              @if(Session::has('error'))
+               <p class="text-danger">{{ Session::get('error') }}</p>
+              @endif
               <div>
-                <input type="text" class="form-control" placeholder="Username" required="" />
+                <input type="text" class="form-control" id="email" name="email" placeholder="Username" />
+                @error('email')
+                  <span class="text-danger">{{ $message }}</span>
+                @enderror
               </div>
               <div>
-                <input type="password" class="form-control" placeholder="Password" required="" />
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password"  />
+                @error('password')
+                  <span class="text-danger">{{ $message }}</span>
+                @enderror
               </div>
               <div>
-                <a class="btn btn-default submit" href="index.html">Log in</a>
-                <a class="reset_pass" href="#">Lost your password?</a>
+                <button type="submit" class="btn btn-default submit">Log in</button>
+                {{-- <a class="reset_pass" href="#">Lost your password?</a> --}}
               </div>
 
               <div class="clearfix"></div>
 
               <div class="separator">
-                <p class="change_link">New to site?
+                {{-- <p class="change_link">New to site?
                   <a href="#signup" class="to_register"> Create Account </a>
-                </p>
+                </p> --}}
 
-                <div class="clearfix"></div>
-                <br />
+                {{-- <div class="clearfix"></div>
+                <br /> --}}
 
-                <div>
+                {{-- <div>
                   <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
                   <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 4 template. Privacy and Terms</p>
-                </div>
+                </div> --}}
               </div>
             </form>
           </section>
         </div>
 
-        <div id="register" class="animate form registration_form">
+        {{-- <div id="register" class="animate form registration_form">
           <section class="login_content">
             <form>
               <h1>Create Account</h1>
@@ -96,7 +106,7 @@
               </div>
             </form>
           </section>
-        </div>
+        </div> --}}
       </div>
     </div>
   </body>
